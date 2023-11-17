@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>News Report Animation</title>
+  </head>
+  <body>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .tv-screen {
+        background: #000;
+        width: 80%;
+        padding: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      }
+
+      .news-text {
+        color: #fff;
+        animation: moveText 20s linear infinite;
+      }
+
+      @keyframes moveText {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    </style>
+
+    <div class="tv-screen">
+      <div id="news-text" class="news-text">
+        <p>
+          Breaking News: Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua.
+        </p>
+      </div>
+    </div>
+
+    <script src="app.js">
+      // You can add more news items or update the existing one.
+          const newsItems = [
+              "Breaking News: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+              "Another Breaking News: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          ];
+
+          let index = 0;
+          const newsTextElement = document.getElementById('news-text');
+
+          function updateNews() {
+              newsTextElement.innerHTML = `<p>${newsItems[index]}</p>`;
+              index = (index + 1) % newsItems.length;
+          }
+
+          // Update news every 20 seconds
+          setInterval(updateNews, 20000);
+
+          // Initial update
+          updateNews();
+    </script>
+  </body>
+</html>
